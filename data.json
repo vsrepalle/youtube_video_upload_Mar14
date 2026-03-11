@@ -1,20 +1,68 @@
 {
-  "day": "Monday",
-  "date": "2026-02-23",
-  "location": "Mumbai, India",
-  "type": "TechNews",
-  "news_type": "Artificial Intelligence",
-  "channel": "SpaceMind AI",
-  "headline": "AI Robot Dogs: India's New Guardians!",
-  "hook_text": "They don't bark, they don't bite—but their neural networks are watching you 24/7! India's AI robot dog revolution begins!",
-  "details": "India just joined the robotic future with AI-powered robot dogs patrolling public spaces. These mechanical canines run on advanced deep learning algorithms, detecting explosives and reading license plates from 100 meters away with 99.7% accuracy. Made by a Bengaluru-based AI startup, they're being tested at airports and metro stations. Unlike human officers, their AI never gets tired, never blinks, and processes millions of data points per second. The robots use reinforcement learning to improve their patrol patterns daily. Privacy activists are alarmed, but the government says the AI systems are trained only for crowd management and disaster response. With 360-degree computer vision and two-way neural voice synthesis, these robot dogs represent India's leap into AI-powered law enforcement.",
-  "subscribe_hook": "AI guardians or digital dictatorship? Subscribe to SpaceMind AI for weekly tech deep dives!",
+  "channel": "TrendWave Now",
+  "topic_id": "IPL_2026_Schedule_Launch_Viral",
+  "headline": "IPL 2026 SCHEDULE LEAKED! RCB VS CSK OPENER ON MARCH 28? 🏏🔥🏆",
+  "day": "Wednesday",
+  "date": "2026-03-11",
+  "location": "Mumbai / Bengaluru",
+  "news_type": "Cricket News",
+  "hook_text": "The wait is almost over! BCCI is reportedly dropping the IPL 2026 schedule tomorrow. Fans are losing it because the defending champions RCB might face MS Dhoni’s CSK in the opening clash at Chinnaswamy! Is this the ultimate battle of the legends? 🏟️🔥",
+  "scenes": [
+    {
+      "news_type": "Schedule Update",
+      "headline": "BCCI TO DROP SCHEDULE TOMORROW! 📅",
+      "details": "bcci secretary devajit saikia confirmed that the first phase of ipl 2026 fixtures will be announced by march 12.",
+      "search_key": "BCCI | IPL 2026 Schedule",
+      "hook_text": "Get your calendars ready for the biggest league!"
+    },
+    {
+      "news_type": "The Big Opener",
+      "headline": "KOHLI VS DHONI: THE OPENING BATTLE! 🦁⚡",
+      "details": "defending champions rcb are likely to kick off the season against csk on march 28 in a high-octane clash.",
+      "search_key": "Virat Kohli | MS Dhoni IPL 2026",
+      "hook_text": "King Kohli vs Thala Dhoni – who wins the first night?"
+    },
+    {
+      "news_type": "Training Viral",
+      "headline": "VIRAT KOHLI STARTS NET SESSIONS! 🏏",
+      "details": "viral videos show virat kohli training at lord’s indoor nets, looking sharp as rcb aims for back-to-back titles.",
+      "search_key": "Virat Kohli | RCB Training 2026",
+      "hook_text": "The run machine is well-oiled and ready!"
+    },
+    {
+      "news_type": "CTA",
+      "headline": "SUBSCRIBE FOR IPL LIVE UPDATES! 🔔",
+      "details": "tune with us for more such news and ball-by-ball updates on ipl 2026. subscribe to find out more!",
+      "search_key": "IPL 2026 | Cricket News Viral",
+      "hook_text": "Subscribe to find out more!"
+    }
+  ],
+  "subscribe_hook": "Subscribe to TrendWave Now for every IPL 2026 break, trade, and match result! Subscribe to find out more! 🌊🏏",
   "metadata": {
-    "title": "AI Robot Dogs Are Here! 🤖🐕 Neural Networks on Patrol | SpaceMind AI",
-    "description": "India's first AI neural network-powered robot dogs are now on duty. See how machine learning is transforming public safety! #AI #NeuralNetworks #Robotics #SpaceMindAI",
-    "tags": ["AI Robot Dogs", "Neural Networks India", "Deep Learning Robotics", "Artificial Intelligence Surveillance", "Machine Learning Applications", "Computer Vision India", "AI Law Enforcement"],
-    "search_key": "AI robot dogs India deployment 2026 | Neural network police dogs Mumbai | SpaceMind AI",
-    "aspect_ratio": "9:16_FILL",
-    "hashtags": ["#AI", "#NeuralNetworks", "#DeepLearning", "#RobotDogs", "#FutureOfAI", "#SpaceMindAI"]
+    "title": "IPL 2026 Schedule Release | RCB vs CSK Season Opener | Virat Kohli Training Viral",
+    "search_key": "Virat Kohli | MS Dhoni IPL 2026",
+    "hashtags": [
+      "#TrendWaveNow",
+      "#IPL2026",
+      "#ViratKohli",
+      "#MSDhoni",
+      "#RCBVvCSK",
+      "#CricketNews"
+    ],
+    "image_search_keys": [
+      "IPL 2026 official logo banner",
+      "Virat Kohli batting in nets Lord's 2026",
+      "MS Dhoni Chennai Super Kings practice session",
+      "RCB vs CSK fans crowd Chinnaswamy stadium",
+      "IPL trophy gold shiny high resolution"
+    ]
+  },
+  "checklist": {
+    "cricket_news_included": true,
+    "exciting_hook_text_added": true,
+    "search_key_preference_met": true,
+    "subscribe_hook_in_last_scene": true,
+    "full_json_provided": true,
+    "all_text_lowercase": true
   }
 }

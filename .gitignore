@@ -1,34 +1,45 @@
-# ============================
-# Ignore OAuth / Client Files
-# ============================
-client_*.json
+# =========================
+# Secrets
+# =========================
+client_secret.json
+token.json
+*.env
 
-# ============================
-# Ignore Media Files
-# ============================
-*.mp4
+# =========================
+# Media (Generated)
+# =========================
+audio/
+images/
+output/
+logs/
+temp/
+
 *.mp3
+*.wav
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.webp
 
-# ============================
-# Optional: Python cache
-# ============================
+# =========================
+# Python
+# =========================
 __pycache__/
 *.pyc
 *.pyo
-
-# ============================
-# Optional: Virtual Env
-# ============================
-venv/
-.env/
-
-temp/
-output/
-__pycache__/
-*.pyc
+*.pyd
 *.log
-client_secrets.json
 
+# =========================
+# Build / Packaging
+# =========================
 dist/
-*.exe
-ShortsCreator_*.exe
+build/
+*.spec
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
