@@ -43,3 +43,13 @@ build/
 # =========================
 .DS_Store
 Thumbs.db
+
+tokens/
+*.pickle
+temp/
+__pycache__/
+.env
+*.log
+dist/
+build/
+*.exe
