@@ -41,7 +41,7 @@ git remote remove origin 2>nul
 
 echo.
 echo Adding new remote...
-git remote add origin https://github.com/vsrepalle/youtube_Feb_23_ver1.git
+git remote add origin https://github.com/vsrepalle/youtube_video_upload_Mar14.git
 
 echo.
 echo Setting main branch...
