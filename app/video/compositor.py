@@ -3,8 +3,23 @@
 Video composition module - creates headers, subtitles, hooks, end screens
 FIXED: Subtitles now properly generated and added
 """
+# app/video/compositor.py - VERSION 1.0 (STABLE)
+"""
+Video composition module - creates headers, subtitles, hooks, end screens
+STABLE VERSION: Word-chunk subtitles, no sentence splitting
 
-from moviepy.editor import CompositeVideoClip, ColorClip, ImageClip
+VERSION HISTORY:
+v1.0 (2026-03-14): Stable word-chunk subtitle system
+    - Splits text into chunks of ~4 words each
+    - Creates static subtitle clips
+    - No sentence-based or word-highlighting features
+
+v0.9 (2026-03-14): Attempted sentence-based subtitles with highlighting (REVERTED)
+    - Tried sentence splitting with word highlighting
+    - Added create_text_with_highlight method
+    - REVERTED due to complexity and compatibility issues
+"""
+from moviepy import CompositeVideoClip, ColorClip, ImageClip
 import numpy as np
 import time
 import traceback

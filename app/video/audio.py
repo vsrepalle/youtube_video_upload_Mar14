@@ -10,7 +10,7 @@ import hashlib
 from datetime import datetime
 
 try:
-    from moviepy.editor import AudioFileClip
+    from moviepy import AudioFileClip
     AUDIO_AVAILABLE = True
 except ImportError as e:
     AUDIO_AVAILABLE = False

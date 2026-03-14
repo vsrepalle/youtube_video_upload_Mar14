@@ -3,6 +3,23 @@
 Text generation module with caching and comprehensive debug
 """
 
+# app/video/text.py - VERSION 1.0 (STABLE)
+"""
+Text generation module with caching and comprehensive debug
+STABLE VERSION: Basic text rendering without highlighting
+
+VERSION HISTORY:
+v1.0 (2026-03-14): Stable text rendering system
+    - Basic text image creation with PIL
+    - Font caching and error handling
+    - No word highlighting features
+
+v0.9 (2026-03-14): Attempted word highlighting (REVERTED)
+    - Added create_text_with_highlight method
+    - Tried to highlight individual words in sentences
+    - REVERTED due to rendering complexity
+"""
+
 import numpy as np
 import hashlib
 import time

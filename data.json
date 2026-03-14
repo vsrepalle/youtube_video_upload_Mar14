@@ -1,68 +1,68 @@
 {
-  "channel": "TrendWave Now",
-  "topic_id": "IPL_2026_Schedule_Launch_Viral",
-  "headline": "IPL 2026 SCHEDULE LEAKED! RCB VS CSK OPENER ON MARCH 28? 🏏🔥🏆",
-  "day": "Wednesday",
-  "date": "2026-03-11",
-  "location": "Mumbai / Bengaluru",
-  "news_type": "Cricket News",
-  "hook_text": "The wait is almost over! BCCI is reportedly dropping the IPL 2026 schedule tomorrow. Fans are losing it because the defending champions RCB might face MS Dhoni’s CSK in the opening clash at Chinnaswamy! Is this the ultimate battle of the legends? 🏟️🔥",
+  "channel": "trendwave now",
+  "topic_id": "bollywood_viral_march14_2026",
+  "headline": "deepika padukone's comeback blockbuster, ranveer singh's action thriller & alia bhatt's next big role! 🎬✨",
+  "day": "saturday",
+  "date": "2026-03-14",
+  "location": "mumbai / delhi / kolkata",
+  "news_type": "bollywood",
+  "hook_text": "bollywood is on fire with massive comebacks and thrilling new projects! from deepika padukone's highly anticipated return to ranveer singh's explosive action film and alia bhatt's mysterious new character — here are the hottest bollywood stories trending today! 🔥",
   "scenes": [
     {
-      "news_type": "Schedule Update",
-      "headline": "BCCI TO DROP SCHEDULE TOMORROW! 📅",
-      "details": "bcci secretary devajit saikia confirmed that the first phase of ipl 2026 fixtures will be announced by march 12.",
-      "search_key": "BCCI | IPL 2026 Schedule",
-      "hook_text": "Get your calendars ready for the biggest league!"
+      "news_type": "bollywood comeback",
+      "headline": "deepika padukone returns with a blockbuster thriller! 🎥",
+      "details": "deepika padukone is making her grand comeback in 2026 with a high-octane thriller that has already broken box office records in advance bookings. fans are calling it her most intense role yet.",
+      "search_key": "deepika padukone | thriller",
+      "hook_text": "is this deepika's biggest comeback ever?"
     },
     {
-      "news_type": "The Big Opener",
-      "headline": "KOHLI VS DHONI: THE OPENING BATTLE! 🦁⚡",
-      "details": "defending champions rcb are likely to kick off the season against csk on march 28 in a high-octane clash.",
-      "search_key": "Virat Kohli | MS Dhoni IPL 2026",
-      "hook_text": "King Kohli vs Thala Dhoni – who wins the first night?"
+      "news_type": "bollywood action",
+      "headline": "ranveer singh's new action film sets the screen on fire! 💥",
+      "details": "ranveer singh's upcoming action-packed film has released its first trailer, featuring jaw-dropping stunts and explosive sequences. the film is expected to redefine action cinema in india.",
+      "search_key": "ranveer singh | action film",
+      "hook_text": "can ranveer's action film become the next big blockbuster?"
     },
     {
-      "news_type": "Training Viral",
-      "headline": "VIRAT KOHLI STARTS NET SESSIONS! 🏏",
-      "details": "viral videos show virat kohli training at lord’s indoor nets, looking sharp as rcb aims for back-to-back titles.",
-      "search_key": "Virat Kohli | RCB Training 2026",
-      "hook_text": "The run machine is well-oiled and ready!"
+      "news_type": "bollywood buzz",
+      "headline": "alia bhatt's mysterious new role has fans guessing! 🤔",
+      "details": "alia bhatt has signed on for a psychological thriller where she plays a complex character with multiple layers. early buzz suggests this could be her most challenging role to date.",
+      "search_key": "alia bhatt | psychological thriller",
+      "hook_text": "what secrets does alia's new character hold?"
     },
     {
-      "news_type": "CTA",
-      "headline": "SUBSCRIBE FOR IPL LIVE UPDATES! 🔔",
-      "details": "tune with us for more such news and ball-by-ball updates on ipl 2026. subscribe to find out more!",
-      "search_key": "IPL 2026 | Cricket News Viral",
-      "hook_text": "Subscribe to find out more!"
+      "news_type": "cta",
+      "headline": "subscribe for daily bollywood updates! 🔔",
+      "details": "follow trendwave now for the latest bollywood news, movie reviews, and celebrity gossip every single day.",
+      "search_key": "trendwave",
+      "hook_text": "subscribe to never miss the hottest bollywood stories!"
     }
   ],
-  "subscribe_hook": "Subscribe to TrendWave Now for every IPL 2026 break, trade, and match result! Subscribe to find out more! 🌊🏏",
+  "subscribe_hook": "subscribe to trendwave now for the most viral bollywood stories every day! 🌊🔥",
   "metadata": {
-    "title": "IPL 2026 Schedule Release | RCB vs CSK Season Opener | Virat Kohli Training Viral",
-    "search_key": "Virat Kohli | MS Dhoni IPL 2026",
+    "title": "deepika padukone comeback | ranveer singh action film | alia bhatt new role",
+    "search_key": "deepika padukone | ranveer singh | alia bhatt",
     "hashtags": [
-      "#TrendWaveNow",
-      "#IPL2026",
-      "#ViratKohli",
-      "#MSDhoni",
-      "#RCBVvCSK",
-      "#CricketNews"
+      "#trendwavenow",
+      "#deepikapadukone",
+      "#ranveersingh",
+      "#aliabhatt",
+      "#bollywood2026",
+      "#indianmovies"
     ],
     "image_search_keys": [
-      "IPL 2026 official logo banner",
-      "Virat Kohli batting in nets Lord's 2026",
-      "MS Dhoni Chennai Super Kings practice session",
-      "RCB vs CSK fans crowd Chinnaswamy stadium",
-      "IPL trophy gold shiny high resolution"
+      "deepika padukone",
+      "ranveer singh",
+      "alia bhatt"
     ]
   },
   "checklist": {
-    "cricket_news_included": true,
+    "cricket_news_included": false,
+    "bollywood_news_included": true,
+    "political_news_included": false,
     "exciting_hook_text_added": true,
-    "search_key_preference_met": true,
     "subscribe_hook_in_last_scene": true,
     "full_json_provided": true,
-    "all_text_lowercase": true
+    "all_text_lowercase": true,
+    "english_only_reminder": "this script is in english only."
   }
 }

@@ -4,7 +4,7 @@ Image processing module - Single images only with looping to fill duration
 Automatically repeats images to ensure no black screen
 """
 
-from moviepy.editor import ImageClip, ColorClip, CompositeVideoClip
+from moviepy import ImageClip, ColorClip, CompositeVideoClip
 from pathlib import Path
 import time
 import traceback

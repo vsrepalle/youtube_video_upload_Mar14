@@ -1,5 +1,21 @@
-# video_composer/main.py - COMPLETE FIXED VERSION
-from moviepy.editor import CompositeVideoClip, concatenate_videoclips
+# app/main.py - VERSION 1.0 (STABLE)
+"""
+Alternative video composer with modular architecture
+STABLE VERSION: Basic composition without speed features
+
+VERSION HISTORY:
+v1.0 (2026-03-14): Stable modular video composer
+    - Basic video composition with fixed timing
+    - Modular audio, image, text components
+    - No speed adjustment features
+
+v0.9 (2026-03-14): Attempted speed features (REVERTED)
+    - Added speed parameters to composition
+    - Tried dynamic speed adjustments
+    - REVERTED due to synchronization issues
+"""
+
+from moviepy import CompositeVideoClip, concatenate_videoclips
 import config
 from pathlib import Path
 import time

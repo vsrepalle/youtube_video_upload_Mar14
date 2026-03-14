@@ -19,7 +19,7 @@ except ImportError:
     print("⚠️ [RENDER] Config not available")
 
 try:
-    from moviepy.editor import VideoFileClip
+    from moviepy import VideoFileClip
     RENDER_AVAILABLE = True
 except ImportError as e:
     RENDER_AVAILABLE = False

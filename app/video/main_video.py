@@ -1,7 +1,18 @@
-# app/video/main_video.py - COMPLETE WITH LOOPING ENGINE
+# app/video/main_video.py - VERSION 1.0 (STABLE)
 """
-Main video composition module - Uses smart image looping to fill entire duration
-No black screens - images automatically repeat to match video length
+Main video composition module with audio-video synchronization
+STABLE VERSION: Basic video creation without speed adjustments
+
+VERSION HISTORY:
+v1.0 (2026-03-14): Stable video composition system
+    - Basic video creation with fixed timing
+    - Audio-video synchronization
+    - No speed adjustment features
+
+v0.9 (2026-03-14): Attempted speed adjustments (REVERTED)
+    - Added speed parameter to create_video
+    - Tried to adjust video speed dynamically
+    - REVERTED due to synchronization issues
 """
 
 import sys
@@ -27,7 +38,7 @@ try:
     from .images_root import ImageProcessor
     from .compositor import VideoCompositor
     from .renderer import Renderer
-    from moviepy.editor import CompositeVideoClip, concatenate_videoclips, ColorClip, TextClip
+    from moviepy import CompositeVideoClip, concatenate_videoclips, ColorClip, TextClip
     
     # Test if TextClip works with ImageMagick
     try:
