@@ -1,64 +1,47 @@
 {
   "channel": "trendwave now",
-  "topic_id": "bollywood_viral_march14_2026",
-  "headline": "deepika padukone's comeback blockbuster, ranveer singh's action thriller & alia bhatt's next big role! 🎬✨",
-  "day": "saturday",
-  "date": "2026-03-14",
-  "location": "mumbai / delhi / kolkata",
-  "news_type": "bollywood",
-  "hook_text": "bollywood is on fire with massive comebacks and thrilling new projects! from deepika padukone's highly anticipated return to ranveer singh's explosive action film and alia bhatt's mysterious new character — here are the hottest bollywood stories trending today! 🔥",
+  "topic_id": "india_viral_top3_march15_2026",
+  "headline": "india viral: moon mission success, bcci naman awards & ayodhya record! 🇮🇳",
+  "day": "sunday",
+  "date": "2026-03-15",
+  "location": "bengaluru / delhi / ayodhya",
+  "news_type": "trending",
+  "hook_text": "india is breaking records today! from the historic lunar landing success to the glitz of the cricket world's biggest night and a massive celebration in ayodhya — here are the top 3 stories everyone is talking about! 🚀🏏✨",
   "scenes": [
     {
-      "news_type": "bollywood comeback",
-      "headline": "deepika padukone returns with a blockbuster thriller! 🎥",
-      "details": "deepika padukone is making her grand comeback in 2026 with a high-octane thriller that has already broken box office records in advance bookings. fans are calling it her most intense role yet.",
-      "search_key": "deepika padukone | thriller",
-      "hook_text": "is this deepika's biggest comeback ever?"
+      "news_type": "space news",
+      "headline": "isro's chandrayaan-4 touches down! 🚀",
+      "details": "india has made history again as the chandrayaan-4 lander successfully touched down on the moon's south pole today. isro confirms that the sample return mission is functioning perfectly, making india one of the elite few to bring lunar soil back to earth.",
+      "search_key": "isro chandrayaan-4 landing | moon south pole mission",
+      "hook_text": "is india now the world leader in space exploration?"
     },
     {
-      "news_type": "bollywood action",
-      "headline": "ranveer singh's new action film sets the screen on fire! 💥",
-      "details": "ranveer singh's upcoming action-packed film has released its first trailer, featuring jaw-dropping stunts and explosive sequences. the film is expected to redefine action cinema in india.",
-      "search_key": "ranveer singh | action film",
-      "hook_text": "can ranveer's action film become the next big blockbuster?"
+      "news_type": "cricket viral",
+      "headline": "naman awards: virat's emotional tribute! 👑",
+      "details": "at the bcci naman awards in delhi tonight, virat kohli went viral after giving an emotional speech dedicated to his journey and his family. the video of his standing ovation has already crossed millions of views on social media within an hour of the ceremony.",
+      "search_key": "virat kohli naman awards speech | bcci awards delhi 2026",
+      "hook_text": "is this the most emotional moment in indian cricket history?"
     },
     {
-      "news_type": "bollywood buzz",
-      "headline": "alia bhatt's mysterious new role has fans guessing! 🤔",
-      "details": "alia bhatt has signed on for a psychological thriller where she plays a complex character with multiple layers. early buzz suggests this could be her most challenging role to date.",
-      "search_key": "alia bhatt | psychological thriller",
-      "hook_text": "what secrets does alia's new character hold?"
+      "news_type": "viral record",
+      "headline": "ayodhya sets new world record! 🪔",
+      "details": "the city of ayodhya has broken its own guinness world record during the spring festival today. over 3 million eco-friendly lamps were lit simultaneously along the sarayu river, creating a stunning visual that is trending globally across all social platforms.",
+      "search_key": "ayodhya world record 2026 | sarayu river deepotsav viral",
+      "hook_text": "can any other city in the world match this spectacle?"
     },
     {
       "news_type": "cta",
-      "headline": "subscribe for daily bollywood updates! 🔔",
-      "details": "follow trendwave now for the latest bollywood news, movie reviews, and celebrity gossip every single day.",
-      "search_key": "trendwave",
-      "hook_text": "subscribe to never miss the hottest bollywood stories!"
+      "headline": "subscribe for india's top trends! 🔔",
+      "details": "don't miss a single beat of what's trending in india. stay updated with trendwave now for daily news on tech, cricket, and viral moments. tune with us for more such news and subscribe to find out more!",
+      "search_key": "trendwave viral india news",
+      "hook_text": "subscribe to find out more!"
     }
   ],
-  "subscribe_hook": "subscribe to trendwave now for the most viral bollywood stories every day! 🌊🔥",
-  "metadata": {
-    "title": "deepika padukone comeback | ranveer singh action film | alia bhatt new role",
-    "search_key": "deepika padukone | ranveer singh | alia bhatt",
-    "hashtags": [
-      "#trendwavenow",
-      "#deepikapadukone",
-      "#ranveersingh",
-      "#aliabhatt",
-      "#bollywood2026",
-      "#indianmovies"
-    ],
-    "image_search_keys": [
-      "deepika padukone",
-      "ranveer singh",
-      "alia bhatt"
-    ]
-  },
+  "subscribe_hook": "subscribe to trendwave now for your daily fix of cricket and bollywood trends! 🌊🎥",
   "checklist": {
-    "cricket_news_included": false,
-    "bollywood_news_included": true,
-    "political_news_included": false,
+    "cricket_news_included": true,
+    "bollywood_news_included": false,
+    "space_news_included": true,
     "exciting_hook_text_added": true,
     "subscribe_hook_in_last_scene": true,
     "full_json_provided": true,

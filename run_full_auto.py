@@ -295,4 +295,3 @@ def render_video():
 
 if __name__ == "__main__":
     render_video()
-    render_video()

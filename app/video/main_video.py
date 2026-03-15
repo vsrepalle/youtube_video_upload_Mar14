@@ -170,7 +170,7 @@ class VideoComposer:
             else:
                 # Simple colored bar as header (fallback)
                 header_bg = ColorClip(size=(self.width, 80), color=(0,0,0)).set_opacity(0.7).set_duration(duration)
-                layers.append(header_bg.set_position("top"))
+                layers.append(header_bg.with_position("top"))
                 print("   ✅ Fallback header added")
             
             self._log_timing("Text creation", text_start)

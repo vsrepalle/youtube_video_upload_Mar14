@@ -1,14 +1,18 @@
-# app/video/text.py - WITH DETAILED DEBUG LOGGING
+# app/video/text.py - WITH DETAILED DEBUG LOGGING AND WORD HIGHLIGHTING
 """
 Text generation module with caching and comprehensive debug
 """
 
-# app/video/text.py - VERSION 1.0 (STABLE)
+# app/video/text.py - VERSION 1.1 (WORD HIGHLIGHTING SUPPORT)
 """
 Text generation module with caching and comprehensive debug
-STABLE VERSION: Basic text rendering without highlighting
 
 VERSION HISTORY:
+v1.1 (2026-03-14): Word highlighting support added
+    - Added create_highlighted_text_image() method
+    - Supports highlighting individual words in different colors
+    - Used for word-by-word subtitle highlighting
+
 v1.0 (2026-03-14): Stable text rendering system
     - Basic text image creation with PIL
     - Font caching and error handling
@@ -232,19 +236,110 @@ class TextGenerator:
             traceback.print_exc()
             return np.zeros((100, max_width, 4), dtype=np.uint8)
     
-    def clear_cache(self):
-        """Clear text cache with debug"""
-        cache_size = len(self._cache)
-        font_cache_size = len(self._font_cache)
+    def create_highlighted_text_image(self, text, highlight_word_index, font_size, 
+                                    color, highlight_color='red', stroke_width=0, 
+                                    stroke_color='black', max_width=900, max_height=None):
+        """
+        Create text image with one word highlighted in different color
+        """
+        debug_id = hashlib.md5(f"highlight_{time.time()}".encode()).hexdigest()[:6]
+        start_time = time.time()
         
-        print(f"\n🧹 [TEXT] Clearing cache...")
-        print(f"   📊 Before: {cache_size} text, {font_cache_size} font entries")
+        print(f"\n   🎯 [HIGHLIGHT:{debug_id}] Creating highlighted text")
+        print(f"      Text: '{text[:50]}...'")
+        print(f"      Highlight word index: {highlight_word_index}")
+        print(f"      Colors: normal={color}, highlight={highlight_color}")
         
-        self._cache.clear()
-        self._font_cache.clear()
+        if not TEXT_AVAILABLE:
+            print(f"      ❌ [HIGHLIGHT:{debug_id}] PIL not available")
+            return np.zeros((100, max_width, 4), dtype=np.uint8)
         
-        print(f"   ✅ [TEXT] Cache cleared")
-        print(f"   📊 After: {len(self._cache)} text, {len(self._font_cache)} font entries")
+        try:
+            # Get font
+            font = self._get_font(font_size)
+            if not font:
+                print(f"      ❌ [HIGHLIGHT:{debug_id}] Font not available")
+                return np.zeros((100, max_width, 4), dtype=np.uint8)
+            
+            # Split text into words
+            words = text.split()
+            if highlight_word_index >= len(words):
+                print(f"      ⚠️ [HIGHLIGHT:{debug_id}] Highlight index {highlight_word_index} out of range (max {len(words)-1})")
+                return self.create_text_image(text, font_size, color, stroke_width, 
+                                            stroke_color, max_width, max_height)
+            
+            # Create image large enough for all text
+            temp_img = Image.new('RGBA', (1, 1), (0, 0, 0, 0))
+            temp_draw = ImageDraw.Draw(temp_img)
+            
+            # Measure full text
+            try:
+                bbox = temp_draw.textbbox((0, 0), text, font=font)
+                text_width = bbox[2] - bbox[0]
+                text_height = bbox[3] - bbox[1]
+            except AttributeError:
+                text_width, text_height = temp_draw.textsize(text, font=font)
+            
+            # Scale if needed
+            if text_width > max_width and font_size > 20:
+                scale = max_width / text_width
+                new_size = int(font_size * scale * 0.9)
+                print(f"      🔄 [HIGHLIGHT:{debug_id}] Scaling font to {new_size}")
+                return self.create_highlighted_text_image(text, highlight_word_index, new_size,
+                                                        color, highlight_color, stroke_width,
+                                                        stroke_color, max_width, max_height)
+            
+            # Create final image
+            padding = stroke_width * 2 + 20
+            img_width = min(text_width + padding, max_width)
+            img_height = text_height + padding
+            if max_height:
+                img_height = min(img_height, max_height)
+            
+            img = Image.new('RGBA', (int(img_width), int(img_height)), (0, 0, 0, 0))
+            draw = ImageDraw.Draw(img)
+            
+            # Draw word by word with highlighting
+            x_offset = (img_width - text_width) // 2
+            y_offset = (img_height - text_height) // 2
+            
+            for i, word in enumerate(words):
+                word_with_space = word + " "
+                
+                # Get word dimensions
+                try:
+                    bbox = draw.textbbox((0, 0), word_with_space, font=font)
+                    word_width = bbox[2] - bbox[0]
+                except AttributeError:
+                    word_width = draw.textsize(word_with_space, font=font)[0]
+                
+                # Choose color
+                word_color = highlight_color if i == highlight_word_index else color
+                
+                # Draw stroke if needed
+                if stroke_width > 0:
+                    for dx in [-stroke_width, 0, stroke_width]:
+                        for dy in [-stroke_width, 0, stroke_width]:
+                            if dx != 0 or dy != 0:
+                                draw.text((x_offset + dx, y_offset + dy), word_with_space, 
+                                        font=font, fill=stroke_color)
+                
+                # Draw word
+                draw.text((x_offset, y_offset), word_with_space, font=font, fill=word_color)
+                
+                x_offset += word_width
+            
+            result = np.array(img)
+            total_time = time.time() - start_time
+            print(f"      ✅ [HIGHLIGHT:{debug_id}] Highlighted text created in {total_time:.3f}s")
+            
+            return result
+            
+        except Exception as e:
+            print(f"      ❌ [HIGHLIGHT:{debug_id}] Error: {e}")
+            traceback.print_exc()
+            return self.create_text_image(text, font_size, color, stroke_width, 
+                                        stroke_color, max_width, max_height)
     
     def get_cache_stats(self):
         """Get cache statistics"""
