@@ -1,40 +1,41 @@
 {
   "channel": "trendwave now",
-  "topic_id": "global_war_viral_march15_2026",
-  "headline": "war 2026: hormuz blockade, kharg island strikes & ai drone swarms! ⚔️",
+  "topic_id": "ipl_2026_viral_march15",
+  "headline": "ipl 2026 shockers: samson to csk, riyan parag captain & rcb vs kkr opener! 🏏",
   "day": "sunday",
   "date": "2026-03-15",
-  "location": "strait of hormuz / tehran / new delhi",
-  "news_type": "war update",
-  "hook_text": "the world is on edge as the middle east conflict enters a critical phase! from the strategic blockade of the strait of hormuz to massive airstrikes on oil hubs and india's breakthrough in ai drone warfare — here is the viral news you need to know! 🚨⛽🚁",
+  "location": "mumbai / chennai / kolkata",
+  "news_type": "cricket",
+  "hook_text": "the ipl 2026 season is turning the cricket world upside down! from legendary trades that nobody saw coming to young stars taking the captaincy reins and a high-voltage opening clash — here are the top 3 viral stories you cannot miss! 🔥🏆",
   "scenes": [
     {
-      "news_type": "maritime conflict",
-      "headline": "hormuz strait closed to 'enemy' ships! 🚢",
-      "details": "iran has officially banned us and israeli vessels from the strait of hormuz, citing rising military tensions. while the waterway remains open for other nations, the move has sent global oil prices soaring to nearly $100 a barrel as shipping routes are rerouted around africa.",
-      "search_key": "strait of hormuz blockade | iran navy us israel ships",
-      "hook_text": "will this blockade lead to a global energy crisis?"
+      "news_type": "mega trade",
+      "headline": "sanju samson joins csk in biggest trade ever! 💛",
+      "details": "the unthinkable has happened in the ipl trade window as sanju samson moves to chennai super kings. in a direct swap, ravindra jadeja has joined rajasthan royals. fans are calling this the most significant player move in league history as csk looks for a long-term wicketkeeper-captain successor.",
+      "search_key": "sanju samson csk jersey | ravindra jadeja rajasthan royals trade",
+      "hook_text": "is sanju samson the perfect successor to thala dhoni?"
     },
     {
-      "news_type": "airstrike update",
-      "headline": "trump threatens more strikes on kharg island! 🔥",
-      "details": "president trump has warned of further strikes on iran's vital oil export hub at kharg island, claiming previous attacks have already caused massive damage. tehran has vowed intensified retaliation, ruling out any ceasefire until airstrikes on its sovereign territory completely stop.",
-      "search_key": "kharg island airstrikes | trump iran war news",
-      "hook_text": "is a full-scale regional war now inevitable?"
+      "news_type": "captaincy shift",
+      "headline": "riyan parag named rajasthan royals captain! 👑",
+      "details": "following the massive trade of samson, rajasthan royals have officially handed the captaincy to the young and explosive riyan parag. at just 24, he becomes one of the youngest captains in ipl history, signaling a new era of aggressive leadership for the royals in the 2026 season.",
+      "search_key": "riyan parag rajasthan royals captain | ipl 2026 captains",
+      "hook_text": "can riyan parag lead the royals to their second ipl title?"
     },
     {
-      "news_type": "military tech",
-      "headline": "india reveals ai swarm drone power! 🤖",
-      "details": "the indian army has successfully demonstrated a new indigenous ai-enabled swarm drone system designed for autonomous warfare. these drones can communicate in real-time to overwhelm enemy air defenses. tune with us for more such news and subscribe to find out more!",
-      "search_key": "india ai swarm drones | indian army autonomous warfare",
-      "hook_text": "is bobby deol the most dangerous villain in cinema right now?"
+      "news_type": "match schedule",
+      "headline": "rcb vs kkr to open ipl 2026 at eden gardens! ⚔️",
+      "details": "the bcci has confirmed that the opening match of ipl 2026 will be a heavy-weight clash between royal challengers bengaluru and defending champions kolkata knight riders. the match is set for later this month at eden gardens, with tickets already selling out in record time.",
+      "search_key": "rcb vs kkr ipl 2026 opener | eden gardens stadium crowd",
+      "hook_text": "tune with us for more such news and subscribe to find out more!"
     }
   ],
-  "subscribe_hook": "subscribe to trendwave now for your daily fix of global trends and breaking news! 🌊🌍",
+  "subscribe_hook": "subscribe to trendwave now for your daily fix of cricket and bollywood trends! 🌊🎥",
   "checklist": {
-    "cricket_news_included": false,
-    "war_news_included": true,
-    "cta_scene_removed": true,
+    "cricket_news_included": true,
+    "ipl_2026_specifics_covered": true,
+    "trade_and_captaincy_news_included": true,
+    "exciting_hook_text_added": true,
     "subscribe_hook_in_last_scene": true,
     "full_json_provided": true,
     "all_text_lowercase": true,

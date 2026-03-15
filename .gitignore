@@ -1,19 +1,32 @@
 # =========================
-# Secrets
+# Secrets & Authentication
 # =========================
 client_secret.json
 token.json
+tokens/
+*.pickle
+*.json
 *.env
+.env
 
 # =========================
-# Media (Generated)
+# Project Archives (Local Only)
 # =========================
+_archive/
+
+# =========================
+# Media & Temporary Assets
+# =========================
+# Ignore the contents of these folders
 audio/
-images/
+images/fetched/
+images/final_scenes/
 output/
 logs/
 temp/
+temp_audio/
 
+# Ignore specific generated file types
 *.mp3
 *.wav
 *.mp4
@@ -21,35 +34,33 @@ temp/
 *.jpg
 *.jpeg
 *.webp
+temp_v.mp4
+selected_images.txt
 
 # =========================
-# Python
+# Python & Environment
 # =========================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.log
+.venv/
+env/
+venv/
 
 # =========================
-# Build / Packaging
+# Build / Packaging / Executables
 # =========================
 dist/
 build/
 *.spec
+*.exe
 
 # =========================
-# OS
+# OS / IDE Specific
 # =========================
 .DS_Store
 Thumbs.db
-
-tokens/
-*.pickle
-temp/
-__pycache__/
-.env
-*.log
-dist/
-build/
-*.exe
+.vscode/
+.idea/
