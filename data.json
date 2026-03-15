@@ -1,48 +1,40 @@
 {
   "channel": "trendwave now",
-  "topic_id": "india_viral_top3_march15_2026",
-  "headline": "india viral: moon mission success, bcci naman awards & ayodhya record! 🇮🇳",
+  "topic_id": "global_war_viral_march15_2026",
+  "headline": "war 2026: hormuz blockade, kharg island strikes & ai drone swarms! ⚔️",
   "day": "sunday",
   "date": "2026-03-15",
-  "location": "bengaluru / delhi / ayodhya",
-  "news_type": "trending",
-  "hook_text": "india is breaking records today! from the historic lunar landing success to the glitz of the cricket world's biggest night and a massive celebration in ayodhya — here are the top 3 stories everyone is talking about! 🚀🏏✨",
+  "location": "strait of hormuz / tehran / new delhi",
+  "news_type": "war update",
+  "hook_text": "the world is on edge as the middle east conflict enters a critical phase! from the strategic blockade of the strait of hormuz to massive airstrikes on oil hubs and india's breakthrough in ai drone warfare — here is the viral news you need to know! 🚨⛽🚁",
   "scenes": [
     {
-      "news_type": "space news",
-      "headline": "isro's chandrayaan-4 touches down! 🚀",
-      "details": "india has made history again as the chandrayaan-4 lander successfully touched down on the moon's south pole today. isro confirms that the sample return mission is functioning perfectly, making india one of the elite few to bring lunar soil back to earth.",
-      "search_key": "isro chandrayaan-4 landing | moon south pole mission",
-      "hook_text": "is india now the world leader in space exploration?"
+      "news_type": "maritime conflict",
+      "headline": "hormuz strait closed to 'enemy' ships! 🚢",
+      "details": "iran has officially banned us and israeli vessels from the strait of hormuz, citing rising military tensions. while the waterway remains open for other nations, the move has sent global oil prices soaring to nearly $100 a barrel as shipping routes are rerouted around africa.",
+      "search_key": "strait of hormuz blockade | iran navy us israel ships",
+      "hook_text": "will this blockade lead to a global energy crisis?"
     },
     {
-      "news_type": "cricket viral",
-      "headline": "naman awards: virat's emotional tribute! 👑",
-      "details": "at the bcci naman awards in delhi tonight, virat kohli went viral after giving an emotional speech dedicated to his journey and his family. the video of his standing ovation has already crossed millions of views on social media within an hour of the ceremony.",
-      "search_key": "virat kohli naman awards speech | bcci awards delhi 2026",
-      "hook_text": "is this the most emotional moment in indian cricket history?"
+      "news_type": "airstrike update",
+      "headline": "trump threatens more strikes on kharg island! 🔥",
+      "details": "president trump has warned of further strikes on iran's vital oil export hub at kharg island, claiming previous attacks have already caused massive damage. tehran has vowed intensified retaliation, ruling out any ceasefire until airstrikes on its sovereign territory completely stop.",
+      "search_key": "kharg island airstrikes | trump iran war news",
+      "hook_text": "is a full-scale regional war now inevitable?"
     },
     {
-      "news_type": "viral record",
-      "headline": "ayodhya sets new world record! 🪔",
-      "details": "the city of ayodhya has broken its own guinness world record during the spring festival today. over 3 million eco-friendly lamps were lit simultaneously along the sarayu river, creating a stunning visual that is trending globally across all social platforms.",
-      "search_key": "ayodhya world record 2026 | sarayu river deepotsav viral",
-      "hook_text": "can any other city in the world match this spectacle?"
-    },
-    {
-      "news_type": "cta",
-      "headline": "subscribe for india's top trends! 🔔",
-      "details": "don't miss a single beat of what's trending in india. stay updated with trendwave now for daily news on tech, cricket, and viral moments. tune with us for more such news and subscribe to find out more!",
-      "search_key": "trendwave viral india news",
-      "hook_text": "subscribe to find out more!"
+      "news_type": "military tech",
+      "headline": "india reveals ai swarm drone power! 🤖",
+      "details": "the indian army has successfully demonstrated a new indigenous ai-enabled swarm drone system designed for autonomous warfare. these drones can communicate in real-time to overwhelm enemy air defenses. tune with us for more such news and subscribe to find out more!",
+      "search_key": "india ai swarm drones | indian army autonomous warfare",
+      "hook_text": "is bobby deol the most dangerous villain in cinema right now?"
     }
   ],
-  "subscribe_hook": "subscribe to trendwave now for your daily fix of cricket and bollywood trends! 🌊🎥",
+  "subscribe_hook": "subscribe to trendwave now for your daily fix of global trends and breaking news! 🌊🌍",
   "checklist": {
-    "cricket_news_included": true,
-    "bollywood_news_included": false,
-    "space_news_included": true,
-    "exciting_hook_text_added": true,
+    "cricket_news_included": false,
+    "war_news_included": true,
+    "cta_scene_removed": true,
     "subscribe_hook_in_last_scene": true,
     "full_json_provided": true,
     "all_text_lowercase": true,
