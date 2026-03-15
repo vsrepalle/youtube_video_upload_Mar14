@@ -78,25 +78,31 @@ class YouTubeUploader:
 
     def perform_upload(self, video_path, data):
         """Handles the heavy lifting of the resumable upload."""
-        # 1. Extract Meta from JSON
-        headline = data.get('headline', 'New Short')
-        details = data.get('details', '')
-        sub_hook = data.get('subscribe_hook', '')
-        meta = data.get('metadata', {})
+        # 1. Extract Meta from JSON (Updated for New Fields)
+        # Priority: 'title' (PS added) -> 'headline' (Original)
+        title = data.get('title') or data.get('headline', 'New Short')
         
-        # 2. Build Description
-        description = f"{headline}\n\n{details}\n\n{sub_hook}\n\n"
-        description += " ".join(meta.get('hashtags', []))
+        # Priority: 'description' (PS added) -> Build from details (Fallback)
+        description = data.get('description')
+        if not description:
+            details = data.get('details', '')
+            sub_hook = data.get('subscribe_hook', '')
+            meta = data.get('metadata', {})
+            description = f"{title}\n\n{details}\n\n{sub_hook}\n\n"
+            description += " ".join(meta.get('hashtags', []))
+        
+        # Priority: 'tags' (PS added) -> 'metadata'['tags'] (Fallback)
+        tags = data.get('tags') or data.get('metadata', {}).get('tags', [])
         
         body = {
             'snippet': {
-                'title': headline[:100],
+                'title': title[:100],
                 'description': description[:5000],
-                'tags': meta.get('tags', [])[:20],
+                'tags': tags[:20],
                 'categoryId': '22' # People & Blogs
             },
             'status': {
-                'privacyStatus': 'private', # Always start private for safety
+                'privacyStatus': 'private', # Default for review
                 'selfDeclaredMadeForKids': False
             }
         }
@@ -144,7 +150,7 @@ def main():
         logger.error("No videos found in output/"); return
     latest_video = max(videos, key=lambda p: p.stat().st_ctime)
 
-    # 2. Load Metadata (data.json)
+    # 2. Load Metadata (data.json) - Using utf-8-sig for PowerShell compatibility
     json_path = Path("data.json")
     if not json_path.exists():
         logger.error("data.json not found!"); return
@@ -156,12 +162,13 @@ def main():
     target_channel = data.get('channel', 'DefaultChannel')
     logger.info(f"Detecting target channel: {target_channel}")
     
-    # Authenticate (This opens browser ONLY if no token exists for THIS channel)
+    # Authenticate
     uploader.get_authenticated_service(target_channel)
 
     # 4. Final Confirmation
     print(f"\nTarget: {target_channel}")
     print(f"Video: {latest_video.name}")
+    print(f"Metadata Found: Title: {data.get('title', 'N/A')}")
     confirm = input("Proceed with upload? (y/n): ").lower()
     
     if confirm == 'y':
