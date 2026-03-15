@@ -1,13 +1,4 @@
-# run_full_auto.py - VERSION 1.2 (ARCHIVING & HYBRID READY)
-"""
-YouTube Shorts Video Generator
-v1.2 (2026-03-16): 
-    - Added archive_previous_session() to save old "winner" images.
-    - Updated cleanup() to be non-destructive for archiving.
-    - Added skip_fetch support for Hybrid workflow (Manual + AI).
-"""
-
-import os
+﻿import os
 import json
 import re
 import time
@@ -16,13 +7,12 @@ import gc
 import subprocess
 import sys
 from pathlib import Path
+from datetime import datetime
 from icrawler.builtin import BingImageCrawler
 from PIL import Image, ImageDraw, ImageFont
 from gtts import gTTS
-from datetime import datetime
 from moviepy import (ImageClip, AudioFileClip, concatenate_videoclips, concatenate_audioclips)
 
-# --- SYSTEM CONFIG ---
 os.environ["IMAGEMAGICK_BINARY"] = r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"
 FONT_PATH = r"C:\Windows\Fonts\arialbd.ttf"
 PROJECT_ROOT = Path(__file__).parent.absolute()
@@ -30,126 +20,117 @@ FETCH_DIR = PROJECT_ROOT / 'images' / 'fetched'
 SCENE_DIR = PROJECT_ROOT / 'images' / 'final_scenes'
 ARCHIVE_DIR = PROJECT_ROOT / 'archive'
 JSON_FILE = "data.json"
-
 RES_W, RES_H = 1080, 1920
 
 def archive_previous_session():
-    """Moves existing images from fetched folder to a timestamped archive."""
     if FETCH_DIR.exists() and any(FETCH_DIR.iterdir()):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         target_path = ARCHIVE_DIR / timestamp
         target_path.mkdir(parents=True, exist_ok=True)
-        
-        print(f"📦 Archiving previous session images to: {target_path}")
+        print(f"?? Archiving previous session to: {target_path}")
         for file in FETCH_DIR.glob("*"):
-            if file.is_file():
-                shutil.move(str(file), str(target_path / file.name))
+            if file.is_file(): shutil.move(str(file), str(target_path / file.name))
+        for sub in FETCH_DIR.glob("scene_*"):
+            if sub.is_dir(): shutil.rmtree(sub)
 
 def cleanup(full_wipe=False):
-    """Initializes workspace. Archives by default, wipes only if requested."""
-    if full_wipe:
-        archive_previous_session()
-    
-    print("🧹 Preparing temp folders...")
-    # These folders are always safe to wipe as they are generated per-run
+    if full_wipe: archive_previous_session()
     for folder in [SCENE_DIR, PROJECT_ROOT / "temp_audio"]:
-        if folder.exists():
-            shutil.rmtree(folder)
+        if folder.exists(): shutil.rmtree(folder)
         folder.mkdir(parents=True, exist_ok=True)
-    
-    if not FETCH_DIR.exists():
-        FETCH_DIR.mkdir(parents=True, exist_ok=True)
+    FETCH_DIR.mkdir(parents=True, exist_ok=True)
 
 def fetch_images(scenes):
-    """Uses icrawler to grab images. SKIPPED if manual selection was already done."""
-    print(f"🚀 Fetching images for {len(scenes)} scenes...")
+    print(f"?? Fetching 5 options for each scene...")
     for i, scene in enumerate(scenes):
-        # If image already exists (from manual picker), don't overwrite it
-        if (FETCH_DIR / f"{i}.jpg").exists():
-            print(f"  ⏭️ Image {i}.jpg already exists (Manual Selection), skipping fetch.")
-            continue
-
-        search_key = scene.get('search_key', '')
-        terms = [t.strip() for t in search_key.split('|')]
-        found = False
+        scene_dir = FETCH_DIR / f"scene_{i}"
+        scene_dir.mkdir(parents=True, exist_ok=True)
+        terms = [t.strip() for t in scene.get('search_key', '').split('|')]
         for term in terms:
-            print(f"  🔍 Trying to fetch image for '{term}'")
-            crawler = BingImageCrawler(storage={'root_dir': str(FETCH_DIR)})
-            crawler.crawl(keyword=term, max_num=1)
-            raw_files = list(FETCH_DIR.glob("00000*"))
-            if raw_files:
-                process_and_standardize(raw_files[0], i)
-                found = True
-                print(f"  ✅ Found image for '{term}'")
-                break
-
-def process_and_standardize(img_path, index):
-    """Crops to 9:16 and resizes."""
-    try:
-        with Image.open(img_path) as img:
-            img = img.convert('RGB')
-            target_ratio = RES_W / RES_H
-            w, h = img.size
-            if (w / h) > target_ratio:
-                new_width = int(h * target_ratio)
-                left = (w - new_width) // 2
-                img = img.crop((left, 0, left + new_width, h))
-            else:
-                new_height = int(w / target_ratio)
-                top = (h - new_height) // 2
-                img = img.crop((0, top, w, top + new_height))
-            img.resize((RES_W, RES_H), Image.Resampling.LANCZOS).save(FETCH_DIR / f"{index}.jpg", "JPEG", quality=85)
-        img_path.unlink()
-    except Exception as e:
-        print(f"❌ Image process error: {e}")
-
-def create_text_overlay(base_img_path, text, highlight_word_index=None, is_last=False):
-    """PIL Based Text Burning (as per your v1.1)"""
-    # ... [Keep your existing PIL logic from v1.1 here] ...
-    # Ensure it uses the lowercase preference you established
-    img = Image.open(base_img_path) if base_img_path and os.path.exists(base_img_path) else Image.new('RGB', (RES_W, RES_H), (25, 25, 25))
-    draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype(FONT_PATH, 50)
-    text = text.lower()
-    
-    # [Rest of your PIL drawing logic from the prompt goes here]
-    # (Abbreviated for brevity, but keep your exact word-highlighting code)
-    return img
-
-def split_into_sentences(text):
-    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
-    return [s.strip() for s in sentences if s.strip()]
+            crawler = BingImageCrawler(storage={'root_dir': str(scene_dir)})
+            crawler.crawl(keyword=term, max_num=5)
+            if any(scene_dir.glob("00000*")): break
 
 def render_video(skip_fetch=False):
-    # If we are starting fresh (not skipping fetch), archive the old session
-    if not skip_fetch:
-        archive_previous_session()
-    
-    cleanup(full_wipe=False)
-    
+    # 1. Load Data
     if not os.path.exists(JSON_FILE):
-        print("❌ Error: data.json missing.")
-        return
-
+        print(f"? Error: {JSON_FILE} not found."); return
     with open(JSON_FILE, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
+    scenes = data.get('scenes', [])
 
-    scenes_data = data.get('scenes', [])
-    
-    # Only fetch if we aren't using images from the manual picker
+    # 2. Fetching Logic
     if not skip_fetch:
-        fetch_images(scenes_data)
+        cleanup(full_wipe=True)
+        fetch_images(scenes)
+        print("\n? Step 1 Complete: 5 options per scene fetched.")
+        print("?? NOW RUN: python manual_image_picker.py")
+        return 
     
-    image_files = {int(p.stem): str(p) for p in FETCH_DIR.glob("*.jpg")}
+    # 3. Rendering Logic (Only runs with --manual)
+    print("?? Starting Render Phase...")
+    (PROJECT_ROOT / "temp_audio").mkdir(exist_ok=True)
+    (PROJECT_ROOT / "output").mkdir(exist_ok=True)
+    
+    clips = []
+    temp_files = []
 
-    video_clips = []
-    audio_clips = []
+    for i, scene in enumerate(scenes):
+        img_path = FETCH_DIR / f"{i}.jpg"
+        if not img_path.exists():
+            print(f"?? Warning: Scene {i} image ({i}.jpg) missing. Skipping."); continue
 
-    # --- REST OF RENDERING LOGIC ---
-    # [Keep your existing Scene/Sentence/Audio/FFMPEG logic from v1.1 here]
-    # ...
+        print(f"??? Scene {i}: Generating Voiceover...")
+        audio_path = PROJECT_ROOT / "temp_audio" / f"scene_{i}.mp3"
+        tts = gTTS(text=scene['details'], lang='en')
+        tts.save(str(audio_path))
+        temp_files.append(audio_path)
+        
+        # Create Audio/Video Clips
+        audio_clip = AudioFileClip(str(audio_path))
+        # Add 0.5s silence at end of each scene for natural flow
+        duration = audio_clip.duration + 0.5
+        
+        img_clip = ImageClip(str(img_path)).with_duration(duration)
+        
+        # Resize to 1080x1920 (Shorts Format)
+        img_clip = img_clip.resized(height=RES_H)
+        if img_clip.w > RES_W:
+            img_clip = img_clip.cropped(x_center=img_clip.w/2, width=RES_W)
+        else:
+            img_clip = img_clip.resized(width=RES_W)
+
+        img_clip = img_clip.with_audio(audio_clip)
+        clips.append(img_clip)
+
+    if not clips:
+        print("? No clips created. Did you pick images in Step 2?"); return
+
+    print("?? MoviePy: Assembling and Exporting Final Video...")
+    final_video = concatenate_videoclips(clips, method="compose")
+    
+    output_filename = f"TrendWave_{int(time.time())}.mp4"
+    output_path = PROJECT_ROOT / "output" / output_filename
+    
+    final_video.write_videofile(
+        str(output_path), 
+        fps=24, 
+        codec="libx264", 
+        audio_codec="aac",
+        temp_audiofile="temp-audio.m4a", 
+        remove_temp=True
+    )
+
+    print(f"\n? VIDEO CREATED: {output_path}")
+    
+    # Final Cleanup of scene audio
+    for f in temp_files:
+        try: os.remove(f)
+        except: pass
 
 if __name__ == "__main__":
-    # If "manual" is passed as an argument, it skips fetching to use picker results
+    import sys
     manual_mode = "--manual" in sys.argv
     render_video(skip_fetch=manual_mode)
+
+
