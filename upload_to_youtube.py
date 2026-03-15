@@ -149,7 +149,7 @@ def main():
     if not json_path.exists():
         logger.error("data.json not found!"); return
     
-    with open(json_path, 'r', encoding='utf-8') as f:
+    with open(json_path, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
 
     # 3. Switch Channel based on JSON

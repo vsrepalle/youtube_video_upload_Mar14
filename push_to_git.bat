@@ -2,58 +2,50 @@
 setlocal EnableDelayedExpansion
 
 echo ============================================
-echo     GIT PUSH TO NEW REMOTE REPOSITORY
+echo      GIT PUSH TO REMOTE REPOSITORY
 echo ============================================
 
-REM ====== USE CURRENT DIRECTORY AUTOMATICALLY ======
 cd /d %~dp0
 
-echo.
-echo Current Directory:
-cd
-echo.
-
-REM ====== CHECK IF GIT IS INITIALIZED ======
 if not exist ".git" (
-    echo Initializing Git Repository...
+    echo [INFO] Initializing Git Repository...
     git init
 )
 
-echo.
-echo Adding all files...
+:: Re-syncing the index with gitignore to be safe
+echo [INFO] Refreshing Git Index...
+git rm -r --cached . >nul 2>&1
 git add .
 
 echo.
-set /p commitmsg=Enter Commit Message: 
+echo ============================================
+echo   FILES TO BE COMMITTED (Check carefully!)
+echo ============================================
+git status -s
+echo ============================================
+echo.
 
-REM If empty, set default message
+set /p commitmsg=Enter Commit Message (or press Enter for default): 
+
 if "!commitmsg!"=="" (
     set commitmsg=Auto Commit - %date% %time%
 )
 
 echo.
-echo Creating commit...
+echo [INFO] Creating commit...
 git commit -m "!commitmsg!"
 
-echo.
-echo Removing old remote (if exists)...
+:: Check if remote exists before removing to avoid errors
 git remote remove origin 2>nul
-
-echo.
-echo Adding new remote...
+echo [INFO] Connecting to GitHub...
 git remote add origin https://github.com/vsrepalle/youtube_video_upload_Mar14.git
 
-echo.
-echo Setting main branch...
+echo [INFO] Setting main branch and pushing...
 git branch -M main
-
-echo.
-echo Pushing to GitHub...
-git push -u origin main
+git push -u origin main --force
 
 echo.
 echo ============================================
-echo            PUSH COMPLETE
+echo             PUSH COMPLETE
 echo ============================================
-
 pause

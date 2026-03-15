@@ -172,7 +172,7 @@ def render_video():
         print("❌ Error: data.json missing.")
         return
 
-    with open(JSON_FILE, 'r', encoding='utf-8') as f:
+    with open(JSON_FILE, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
 
     scenes_data = data.get('scenes', [])

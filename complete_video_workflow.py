@@ -2,7 +2,7 @@ import os
 import json
 import shutil
 from pathlib import Path
-from icrawler.builtin import GoogleImageCrawler, BingImageCrawler
+from icrawler.builtin import BingImageCrawler
 from PIL import Image
 
 # --- CONFIG ---
@@ -11,6 +11,8 @@ JSON_FILE = "data.json"
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
 def auto_cleanup():
+    """Skips cleanup to preserve manually picked images."""
+    return # skipped
     print("🧹 Running Auto-Cleanup...")
     fetch_dir = PROJECT_ROOT / 'images' / 'fetched'
     if fetch_dir.exists():
@@ -19,11 +21,17 @@ def auto_cleanup():
     print("✅ Cleanup Complete.")
 
 def process_and_crop():
-    """Processes all downloaded images: converts to RGB, crops to 9:16, and renames them."""
+    """Processes images: converts to RGB, crops to 9:16, and renames them to match scene indices."""
     fetch_dir = PROJECT_ROOT / 'images' / 'fetched'
-    images = list(fetch_dir.glob("*"))
+    # We sort them to ensure 000001.jpg becomes 0.jpg, etc.
+    images = sorted(list(fetch_dir.glob("*")))
     
+    print("✂️ Standardizing and Cropping images...")
     for i, img_path in enumerate(images):
+        # Skip if already named correctly (e.g. 0.jpg) to avoid re-processing
+        if img_path.name == f"{i}.jpg":
+            continue
+            
         try:
             with Image.open(img_path) as img:
                 img = img.convert('RGB')
@@ -41,12 +49,12 @@ def process_and_crop():
                     img = img.crop((0, top, w, top + new_height))
                 
                 final_img = img.resize((1080, 1920), Image.Resampling.LANCZOS)
-                # Save with a clean index name for the video script to find
+                # Save as scene index (0.jpg, 1.jpg)
                 final_img.save(fetch_dir / f"{i}.jpg", "JPEG")
             
-            # Remove the original icrawler file if it wasn't named i.jpg
-            if img_path.name != f"{i}.jpg":
-                img_path.unlink()
+            # Remove the original icrawler file
+            img_path.unlink()
+            print(f"✅ Processed: {i}.jpg")
         except Exception as e:
             print(f"⚠️ Failed to process {img_path.name}: {e}")
 
@@ -55,24 +63,34 @@ def fetch_with_icrawler():
         print(f"❌ {JSON_FILE} not found!")
         return
 
-    with open(JSON_FILE, 'r', encoding='utf-8') as f:
+    # Using utf-8-sig to handle PowerShell's BOM
+    with open(JSON_FILE, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
     
-    # Accessing the specific path in your JSON
-    search_keys = data.get("metadata", {}).get("image_search_keys", [])
+    # Updated to read from your new 'scenes' list
+    search_keys = [s.get("search_key") for s in data.get("scenes", [])]
     save_dir = str(PROJECT_ROOT / 'images' / 'fetched')
 
     print(f"🚀 Starting icrawler for {len(search_keys)} terms...")
 
     for term in search_keys:
-        print(f"🔍 Fetching: {term}")
-        # Using Bing crawler as it's often more lenient with automated requests
+        print(f"🔍 Checking/Fetching for: {term}")
         bing_crawler = BingImageCrawler(storage={'root_dir': save_dir})
+        # Note: icrawler skips existing files by default, preserving your manual picks!
         bing_crawler.crawl(keyword=term, max_num=IMAGES_PER_TERM)
 
-    # After downloading, we need to standardize the sizes and names
+    # Standardize names and crops
     process_and_crop()
 
 if __name__ == "__main__":
-    auto_cleanup()
+    # 1. Fetch/Verify Images
     fetch_with_icrawler()
+    
+    # 2. TRIGGER VIDEO RENDERING HERE
+    print("\n🎬 Images ready. Starting video rendering...")
+    
+    # If your rendering logic is in another file, you would call it here.
+    # For example: 
+    # os.system("python render_video_script.py")
+    
+    print("✨ Workflow complete!")
