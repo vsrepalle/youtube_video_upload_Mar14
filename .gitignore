@@ -2,6 +2,7 @@
 # Secrets & Authentication
 # =========================
 client_secret.json
+client_secrets.json
 token.json
 tokens/
 *.pickle
@@ -63,4 +64,4 @@ build/
 .DS_Store
 Thumbs.db
 .vscode/
-.idea/
+.idea/.env

@@ -1,0 +1,18 @@
+﻿Act as an educational content creator. Choose 5 mind-blowing facts about history, science, or nature.
+Create a 5-scene script in JSON (45 seconds total).
+- 'headline' should be a curiosity-driven question.
+- 'details' should provide a detailed, surprising answer.
+- Scene 5 search_key: 'educational curiosity | subscribe'.
+
+Schema:
+{
+  "channel": "WonderFacts24_7",
+  "metadata": {"title": "", "description": "", "hashtags": []},
+  "scenes": [
+    {"scene": 1, "headline": "", "details": "", "search_key": ""},
+    {"scene": 2, "headline": "", "details": "", "search_key": ""},
+    {"scene": 3, "headline": "", "details": "", "search_key": ""},
+    {"scene": 4, "headline": "", "details": "", "search_key": ""},
+    {"scene": 5, "headline": "", "details": "", "search_key": "subscribe to find out more"}
+  ]
+}

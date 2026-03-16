@@ -1,0 +1,19 @@
+﻿Act as a viral news curator. Research the top 3 trending stories in Indian Cricket and Bollywood.
+Create a high-engagement video script in JSON format with exactly 5 scenes to reach a 45-second duration.
+- For 'search_key', use the format: 'Celeb/Player Name Trend | Action Context'.
+- All 'headline' and 'details' text MUST be in lowercase.
+- Scene 5 must include the hook: 'subscribe to find out more'.
+- Metadata must include 5 viral hashtags.
+
+Schema:
+{
+  "channel": "TrendWave Now",
+  "metadata": {"title": "", "description": "", "hashtags": []},
+  "scenes": [
+    {"scene": 1, "headline": "", "details": "", "search_key": ""},
+    {"scene": 2, "headline": "", "details": "", "search_key": ""},
+    {"scene": 3, "headline": "", "details": "", "search_key": ""},
+    {"scene": 4, "headline": "", "details": "", "search_key": ""},
+    {"scene": 5, "headline": "", "details": "", "search_key": "tune with us | subscribe"}
+  ]
+}

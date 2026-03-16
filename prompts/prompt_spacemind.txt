@@ -1,0 +1,18 @@
+﻿Act as a futurist tech reporter. Identify 3 breakthroughs in SpaceX, Mars exploration, or Generative AI.
+Create a detailed 5-scene script in JSON for a 45-second video.
+- 'search_key' format: 'SpaceX Mars Render | AI Robot Cooking'.
+- Use 'Mars Water shot' style descriptions for visual keys.
+- Scene 5 must include the hook: 'tune with us for more such news'.
+
+Schema:
+{
+  "channel": "SpaceMind AI",
+  "metadata": {"title": "", "description": "", "hashtags": []},
+  "scenes": [
+    {"scene": 1, "headline": "", "details": "", "search_key": ""},
+    {"scene": 2, "headline": "", "details": "", "search_key": ""},
+    {"scene": 3, "headline": "", "details": "", "search_key": ""},
+    {"scene": 4, "headline": "", "details": "", "search_key": ""},
+    {"scene": 5, "headline": "", "details": "", "search_key": "tune with us | subscribe"}
+  ]
+}
